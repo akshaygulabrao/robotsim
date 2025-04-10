@@ -1,8 +1,16 @@
 # Simple Robot Navigation
+Using PX4-Autopilot to demonstrate motion planning algorithms in a drone. 
 
-Using ROS 2 and Gazebo to demonstrate motion planning algorithms in drones.
+## Installing PX4-Autopilot
+I'm using an amd64 Ubuntu 22.04 Lenovo Thinkpad X1 to do this experiment. I'm using the v1.14.0 of PX4-Autopilot.
 
-## Small things worth saying
-1. Don't try using docker containers to get ROS 2 working on macOS. Instead, use vmWare Fusion with an [arm64 Ubuntu 24.04 iso file](https://cdimage.ubuntu.com/daily-live/20240421/noble-desktop-arm64.iso). I spent 15 hours dealing with X11 forwarding/VNC issues before giving up. Use link to find the iso file, I had trouble finding it with google. 
-2. The `/opt/ros/<distro>/setup.bash` modifies `PYTHONPATH` environment variable. Use VSCode's ROS extension command "Update Python Path" for language server support.
+```bash
+git clone git clone https://github.com/PX4/PX4-Autopilot.git
+git fetch --all --tags
+git checkout test v1.14.0
+. ./Tools/setup/ubuntu.sh
+make px4_sitl gz_x500
+```
+
+**NOTE**: The first time that I ran the px4_sitl command, my terminal instantly exited. I booted up again, and then the build system ran successfully. Please let me know if any of you can replicate this.
 
